@@ -138,10 +138,24 @@ npm start          # Start production server
 
 ---
 
-## 🧪 Testing
+# How to Place an Order
 
-- ✅ REST APIs via Postman
-- ✅ Frontend tested in Chrome and Firefox
+1. Navigate to [http://localhost:3000](http://localhost:3000).
+
+2. Login using your user credentials.
+
+3. Go to a product page and click **"Add to Cart"**.
+
+4. Open cart from the navbar and click **"Proceed to Checkout"**.
+
+5. Fill in the shipping address and select the payment method.
+
+6. Click **"Place Order"**.
+
+7. You will be redirected to a confirmation page.
+
+8. View your order in the **Order History** section.
+
 
 ---
 
@@ -149,20 +163,34 @@ npm start          # Start production server
 
 ```
 /backend
-  ├── /controllers
-  ├── /models (MongoDB)
-  ├── /prisma (PostgreSQL)
-  ├── /routes
-  ├── index.js
-  ├── app.js
+│
+├── /controllers         # All route handlers and business logic of (auth, cart, products, orders, report)
+├── /models              # Mongoose schemas (MongoDB models)
+├── /prisma              # Prisma schema, client, migrations for PostgreSQL
+├── /routes              # Express routes for APIs (auth, cart, products, orders, report)
+├── /middleware          # Auth guards, error handlers, role checkers
+├── /utils               # Reusable utility functions (e.g., asyncWrapper)
+├── createadminuser.js   # Script to create an initial admin user
+├── app.js               # Express app configuration and middlewares
+├── index.js             # Entry point to start the backend server
+
 /frontend
-  ├── /app
-      |── (home)
-      |── admin
-  ├── /components
+│
+├── /app
+│   ├── (home)           # Public-facing shop and product listing pages
+│   └── /admin           # Admin dashboard (protected routes)
+│
+├── /components          # Reusable UI components (buttons, modals, cards, etc.)
+├── /lib                 # Utility functions/hooks used across app
+├── /styles              # Global CSS and Tailwind configuration
+├── /hooks               # Custom React hooks (auth, data fetching, etc.)
+├── /context             # React context for state like auth, cart, etc.
+
 ```
 
 ---
+
+
 
 ## 👨‍💻 Author
 
