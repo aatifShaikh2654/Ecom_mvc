@@ -58,9 +58,8 @@ exports.checkout = asyncWrapper(async (req, res, next) => {
             }
         })
 
-        await Cart.updateOne({ userId: user?._id }, {
-            items: []
-        })
+        cart.items = []
+        await cart.save()
 
     } else if (type === "buynow") {
 
@@ -107,6 +106,9 @@ exports.getOrders = asyncWrapper(async (req, res, next) => {
         },
         include: {
             orderItems: true,
+        },
+        orderBy: {
+            createdAt: "desc"
         }
     })
 
@@ -115,7 +117,7 @@ exports.getOrders = asyncWrapper(async (req, res, next) => {
             const enrichedItems = await Promise.all(
                 order.orderItems.map(async (item) => {
                     try {
-                        const product = await Product.findById(item.productId).select("name price images description stock");
+                        const product = await Product.findById(item.productId).populate("category");
 
                         return {
                             ...item,
@@ -160,7 +162,10 @@ exports.getAllOrders = asyncWrapper(async (req, res, next) => {
             address: true
         },
         skip: query.skip,
-        take: query.take
+        take: query.take,
+        orderBy: {
+            createdAt: "desc"
+        }
     })
 
     const totalCount = await prisma.orders.count({
@@ -174,8 +179,7 @@ exports.getAllOrders = asyncWrapper(async (req, res, next) => {
             const enrichedItems = await Promise.all(
                 order.orderItems.map(async (item) => {
                     try {
-                        const product = await Product.findById(item.productId).select("name price images description stock");
-
+                        const product = await Product.findById(item.productId)
                         return {
                             ...item,
                             product,
@@ -217,30 +221,38 @@ exports.getSingleOrder = asyncWrapper(async (req, res, next) => {
     const user = req.user;
     const { id } = req.params;
 
-    let order = await prisma.orders.findFirst({
-        id,
-        userId: user.id
+    const order = await prisma.orders.findFirst({ 
+        where: { id, userId: user.id },
+        include: { orderItems: true },
     });
 
-    order = order.orderItems.map(async (item) => {
-        try {
-            const product = await Product.findById(item.productId).select("name price images description stock");
+    if (!order) {
+        return next(new ErrorHandler("Order not found", 404));
+    }
 
-            return {
-                ...item,
-                product,
-            };
-        } catch (err) {
-            return {
-                ...item,
-                product: null,
-            };
-        }
-    })
+    const populatedItems = await Promise.all(
+        order.orderItems.map(async (item) => {
+            try {
+                const product = await Product.findById(item.productId).populate("category");
+
+                return {
+                    ...item,
+                    product,
+                };
+            } catch (err) {
+                return {
+                    ...item,
+                    product: null,
+                };
+            }
+        })
+    );
+
+    order.orderItems = populatedItems;
 
     return res.status(200).json({
         success: true,
         message: "Order fetched successfully",
-        order
-    })
-})
+        data: order,
+    });
+});

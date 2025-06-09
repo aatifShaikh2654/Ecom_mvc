@@ -28,14 +28,16 @@ model User {
 }
 
 model Address {
-  id      Int      @id @default(autoincrement())
-  address String?
-  pincode Int?
-  state   String?
-  country String?
-  userId  String?
-  user    User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  orders  Orders[]
+  id        Int      @id @default(autoincrement())
+  address   String?
+  pincode   Int?
+  state     String?
+  country   String?
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orders    Orders[]
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
 }
 
 model Orders {
@@ -48,6 +50,8 @@ model Orders {
   cartId     String?
   addressId  Int?
   address    Address?    @relation(fields: [addressId], references: [id], onDelete: Cascade)
+  createdAt  DateTime?    @default(now())
+  updatedAt  DateTime?    @updatedAt
 }
 
 model OrderItem {
@@ -56,7 +60,9 @@ model OrderItem {
   productId String?
   quantity  Int?
 
-  order Orders @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  order     Orders   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
 }
 
 enum Roles {
