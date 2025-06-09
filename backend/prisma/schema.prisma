@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("SQL_DB_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String?  @unique
+  phone     String?  @unique
+  password  String
+  role      Roles    @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orders    Orders[]
+  addresses Address[]
+}
+
+model Address {
+  id      Int      @id @default(autoincrement())
+  address String?
+  pincode Int?
+  state   String?
+  country String?
+  userId  String?
+  user    User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orders  Orders[]
+}
+
+model Orders {
+  id     String @id @default(uuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  orderItems OrderItem[]
+  total      Int?
+  cartId     String?
+  addressId  Int?
+  address    Address?    @relation(fields: [addressId], references: [id], onDelete: Cascade)
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  productId String?
+  quantity  Int?
+
+  order Orders @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+enum Roles {
+  ADMIN
+  USER
+}
