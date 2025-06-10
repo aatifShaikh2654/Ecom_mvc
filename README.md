@@ -56,7 +56,7 @@ JWT_SECRET=your_jwt_secret
 
 Create a `.env` in frontend file:
 ```env
-API_URL=http://localhost:8000/api/v1
+API_URL=http://localhost:8000/api/v1/
 IMAGE_URL=http://localhost:8000/
 ```
 
