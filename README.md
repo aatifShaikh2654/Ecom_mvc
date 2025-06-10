@@ -43,17 +43,25 @@ npm install
 
 ### 3. Configure Environment
 
-Create a `.env` file:
+Create a `.env` in backend file:
 
 ```env
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/ecommerce
 DATABASE_URL=postgresql://user:password@localhost:5432/ecommerce
 JWT_SECRET=your_jwt_secret
-IMAGE_URL=http://localhost:5000/
 ```
 
 ---
+
+Create a `.env` in frontend file:
+```env
+API_URL=http://localhost:8000/api/v1
+IMAGE_URL=http://localhost:8000/
+```
+
+---
+
 
 ## 📦 Database Setup
 
