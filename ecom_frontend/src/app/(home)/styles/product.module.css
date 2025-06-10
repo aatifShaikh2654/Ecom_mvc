@@ -1,0 +1,242 @@
+.item {
+  background-color: var(--gray-color);
+  padding: 1rem;
+  border-radius: 1.2rem;
+  font-size: var(--font);
+  display: flex;
+  align-items: start;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.item div {
+  width: 100%;
+}
+
+.item .details {
+  display: flex;
+  align-items: start;
+  width: 100%;
+  font-size: 1em;
+  flex-direction: column;
+}
+
+.item h5 {
+  font-size: 1.3em; /* Ensure this fits your design */
+  font-weight: 500; /* Medium font weight */
+  max-width: 19ch; /* Limit text width to 15 characters */
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  overflow: hidden; /* Hide overflowed content */
+  text-overflow: ellipsis; /* Add '...' for truncated text */
+  color: var(--text-color); /* Use variable for flexible theming */
+  text-transform: capitalize;
+}
+
+.item .price {
+  font-weight: 600;
+  color: var(--text2-color);
+}
+
+.item .image {
+  height: 18em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.8em;
+  background-color: var(--bg-color);
+}
+
+.item .image img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  transition: all 0.5s ease;
+}
+
+.item .image a {
+  height: 100%;
+  width: 100%;
+}
+
+.item .image:hover img {
+  transform: scale(1.1);
+}
+
+.item .icon {
+  font-size: 1.4em;
+  padding: 0.4em;
+  /* width: 1.9em;
+  height: 1.7em; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  border-radius: 50%;
+  transition: all 0.5s ease;
+}
+
+.item .icon svg {
+  color: var(--text-color);
+}
+
+.item .icon:hover {
+  background-color: var(--accent2-color);
+}
+
+.item .icon:hover svg {
+  color: var(--bg-color);
+}
+
+.item .ctc {
+  position: absolute;
+  top: 6%;
+  right: 4%;
+  /* right: 0; */
+  /* margin: 0 auto; */
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.item .add {
+  background-color: var(--accent2-color);
+  color: var(--bg-color);
+  font-weight: 600;
+  border-radius: 50%;
+  padding: 0.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  transform: translateY(-170%);
+  transition: all 0.3s ease-in-out var(--delay);
+}
+
+.item:hover .add {
+  transform: translateY(0);
+}
+
+.item .add span {
+  display: none;
+}
+
+@media (max-width: 1440px) {
+  .item h5 {
+    max-width: 16ch;
+  }
+}
+
+@media (max-width: 1199px) {
+  .item h5 {
+    max-width: 15ch;
+  }
+}
+
+@media (max-width: 999px) {
+  .item {
+    background-color: var(--gray-color);
+    padding: 15px;
+    border-radius: 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .item .image {
+    height: 18em;
+  }
+
+  .item .add {
+    font-size: 0.9rem;
+  }
+
+  .item .add svg {
+    font-size: 1.3em;
+  }
+
+  .item .ctc {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .item .add {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 599px) {
+  .item {
+    padding: 0.8em;
+    font-size: 0.8em;
+    border-radius: 0.8em;
+  }
+  .item .image {
+    height: 13em;
+  }
+  .item h5 {
+    max-width: 18ch;
+    font-size: 1.2em;
+  }
+  .item .add {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 499px) {
+  .item h5 {
+    max-width: 14ch;
+  }
+}
+
+@media (max-width: 399px) {
+  .item{
+    font-size: .7em;
+  }
+  .item h5 {
+    max-width: 13ch;
+  }
+}
+
+.addToCartButton {
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: black;
+}
+
+.removeButton {
+  position: absolute;
+  top: 11rem;
+  /* right: 8px; */
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.removeButton:hover {
+  background: rgba(255, 0, 0, 0.8);
+  color: #fff;
+}

@@ -1,0 +1,106 @@
+.section {
+  font-size: var(--font);
+  margin-bottom: 2rem;  
+}
+
+.section .item {
+  font-size: 1em;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+
+.section .item h4 {
+  font-size: 1.3em;
+  max-width: 22ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-color);
+}
+
+.section .item .price {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: var(--text2-color);
+}
+
+.section .item .image {
+  margin-top: 10px;
+  border-radius: 1em;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--gray-color);
+  margin-bottom: 0.5em;
+}
+
+.section .item .image img {
+  width: 100%;
+  height: auto;
+}
+
+.section .item .image:hover img {
+  transform: scale(1.1);
+}
+
+.section .item .btn {
+  width: 100%;
+  text-align: center;
+  font-size: 1em;
+  font-weight: 500;
+  border-radius: 2em;
+  background-color: var(--text-color);
+  padding: 0.45em;
+  color: var(--bg-color);
+  transition: all 0.5s ease;
+}
+
+.section .item .btn.active {
+  background-color: var(--accent2-color);
+  color: var(--text-color);
+}
+
+.section .item .btn:hover {
+  background-color: var(--accent2-color);
+  color: var(--text-color);
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0.8em;
+  font-size: 1em;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.btns .btn {
+  width: 100%;
+  text-align: center;
+  font-size: 1em;
+  font-weight: 500;
+  border-radius: 2em;
+  background-color: var(--text-color);
+  padding: 0.45em;
+  width: 22%;
+  color: var(--bg-color);
+  transition: all 0.5s ease;
+}
+
+.btns .btn:hover {
+  background-color: var(--accent2-color);
+  color: var(--text-color);
+}
+
+.btns .btn.active {
+  color: var(--accent2-color);
+  background-color: var(--text-color);
+}
+

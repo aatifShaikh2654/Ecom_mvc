@@ -1,0 +1,676 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --radius: 0.65rem;
+  --text-color: #000;
+  --bg-color: #fff;
+  --accent2-color: #eee;
+  --font: .9rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.623 0.214 259.815);
+  --primary-foreground: oklch(0.97 0.014 254.604);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.623 0.214 259.815);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-primary: oklch(0.623 0.214 259.815);
+  --sidebar-primary-foreground: oklch(0.97 0.014 254.604);
+  --sidebar-accent: oklch(0.967 0.001 286.375);
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.623 0.214 259.815);
+}
+
+.dark {
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.546 0.245 262.881);
+  --primary-foreground: oklch(0.379 0.146 265.522);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.488 0.243 264.376);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.546 0.245 262.881);
+  --sidebar-primary-foreground: oklch(0.379 0.146 265.522);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.488 0.243 264.376);
+}
+
+/* #483028
+#443424
+#2c2c2b
+#2d2c2a */
+
+/* font-family: "Roboto Serif", serif; */
+body {
+  font-family: "Manrope", sans-serif !important;
+  background-color: var(--bg-color);
+  overflow-x: clip;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: var(--font);
+}
+
+.padd-x {
+  padding: 0 2vw !important;
+}
+
+@media (max-width: 768px) {
+  .padd-x {
+    padding: 0 15px !important;
+  }
+}
+
+
+.main {
+  max-width: 1440px;
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 0px !important;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+.progress-container {
+  background-color: var(--gray-color);
+  height: 3px;
+  position: relative;
+  width: 100%;
+  border-radius: 50px;
+  margin-right: 20px;
+}
+
+.progress-bar {
+  background-color: var(--text2-color);
+  height: 70%;
+  margin-top: 1px;
+  display: block;
+  border-radius: 50px;
+  transform-origin: left;
+  transition: all 0.5s ease;
+}
+
+/* arrow code herhehre  */
+
+.arrow {
+  width: 3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  font-size: 2.5rem;
+  /* background-color: var(--gray-color); */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.7rem;
+  color: var(--bg-color);
+  background-color: var(--accent2-color);
+  transition: all 0.5s ease;
+}
+
+.arrow.disabled {
+  background-color: var(--gray-color);
+  color: var(--text-color);
+}
+
+.arrow:last-child {
+  margin-right: 0px !important;
+}
+
+/* loader css here  */
+
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 99999999;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font);
+}
+
+.loader-container .loader-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--text-color);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.loader-circle {
+  background-color: var(--bg-color);
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+  position: relative;
+  z-index: 9;
+}
+
+.loader {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid var(--text-color);
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 999px) {
+  .loader-container {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* quantity css herherhehr  */
+
+.quantity {
+  display: flex;
+  align-items: center;
+  font-size: var(--font);
+  gap: 0.35em;
+}
+
+.quantity input {
+  width: 3em;
+  padding: 0.13em 0;
+  border-radius: 2em;
+  font-size: 1em;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  text-align: center;
+  background: none;
+  border: 1px solid var(--bg-color);
+  color: var(--text-color) !important;
+  /* Hide arrows in Chrome, Safari, Edge, and Opera */
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  /* Apply to modern browsers */
+}
+
+.quantity.accent input {
+  border: 1px solid var(--accent2-color);
+}
+
+/* Additional styling for WebKit browsers (Chrome, Safari, Edge) */
+.quantity input::-webkit-outer-spin-button,
+.quantity input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Additional styling for Firefox */
+.quantity input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.quantity .svg {
+  width: 1.7em;
+  height: 1.7em;
+  font-size: 1.1em !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: .45vw; */
+  border-radius: 50%;
+  color: var(--text-color);
+  cursor: pointer;
+  background-color: var(--bg-color);
+  transition: all 0.5s ease;
+}
+
+.quantity .svg.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity.accent .svg {
+  color: var(--bg-color);
+  background-color: var(--accent2-color);
+}
+
+.quantity .svg:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+/* input csss rherehreh  */
+
+.input-field {
+  font-size: var(--font);
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.input-field label {
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.input-field .input {
+  padding: 0.9em 1.4em;
+  border: 1.5px solid var(--text-color);
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 500;
+  line-height: 100%;
+  width: 100%;
+  outline: none;
+  display: flex;
+  color: var(--text-color);
+  align-items: center;
+}
+
+.input-field .input .suggestion {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  height: 10em;
+  padding: 0.3em;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  z-index: 99999;
+  background-color: var(--bg-color);
+  overflow-y: scroll;
+  border: 1px solid var(--accent2-color);
+}
+
+.input-field .input .suggestion::-webkit-scrollbar {
+  width: 5px;
+  /* Set the width of the scrollbar */
+}
+
+/* Track */
+.input-field .input .suggestion::-webkit-scrollbar-track {
+  background: var(--bg-color);
+  /* Color of the scrollbar track */
+}
+
+/* Handle */
+.input-field .input .suggestion::-webkit-scrollbar-thumb {
+  background: var(--accent2-color);
+  border-radius: 42px !important;
+  /* Color of the scrollbar handle */
+}
+
+/* Handle on hover */
+.input-field .input .suggestion::-webkit-scrollbar-thumb:hover {
+  background: var(--accent2-color);
+  /* Color of the scrollbar handle on hover */
+}
+
+.input-field .input .suggestion li {
+  padding: 0.5em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.input-field .input .suggestion li:hover {
+  background-color: var(--gray-color);
+}
+
+.input-field .input svg {
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.input-field .input input {
+  width: 100%;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.input-field .input textarea {
+  width: 100%;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.input-field .input :focus {
+  border-color: var(--accent2-color);
+}
+
+@media (max-width: 992px) {
+  .input-field {
+    font-size: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .input-field {
+    margin-bottom: 0.8rem;
+  }
+}
+
+/* checkbox css hrere */
+
+/* checkbox settings 👇 */
+
+.ui-checkbox {
+  --primary-color: #000;
+  --secondary-color: #fff;
+  --primary-hover-color: #000;
+  /* checkbox */
+  --checkbox-diameter: 1.4em;
+  --checkbox-border-radius: 5px;
+  --checkbox-border-color: #d9d9d9;
+  --checkbox-border-width: 1px;
+  --checkbox-border-style: solid;
+  /* checkmark */
+  --checkmark-size: 1.4;
+}
+
+.ui-checkbox,
+.ui-checkbox *,
+.ui-checkbox *::before,
+.ui-checkbox *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ui-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: var(--checkbox-diameter);
+  height: var(--checkbox-diameter);
+  border-radius: var(--checkbox-border-radius);
+  background: var(--secondary-color);
+  border: var(--checkbox-border-width) var(--checkbox-border-style) var(--checkbox-border-color);
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.ui-checkbox::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+  box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+  border-radius: inherit;
+  opacity: 0;
+  -webkit-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  -o-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+}
+
+.ui-checkbox::before {
+  top: 40%;
+  left: 50%;
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 7px;
+  border-right: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
+  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  -ms-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  opacity: 0;
+  -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),
+    opacity 0.1s;
+  -o-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+}
+
+/* actions */
+
+.ui-checkbox:hover {
+  border-color: var(--primary-color);
+}
+
+.ui-checkbox:checked {
+  background: var(--primary-color);
+  border-color: transparent;
+}
+
+.ui-checkbox:checked::before {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  -ms-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  -o-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+}
+
+.ui-checkbox:active:not(:checked)::after {
+  -webkit-transition: none;
+  -o-transition: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  transition: none;
+  opacity: 1;
+}
+
+/* Breadcrumb.module.css */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: .9rem !important;
+  margin: 2rem 0;
+  margin-bottom: 2rem !important;
+  color: #555;
+}
+
+.breadcrumbList {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.breadcrumbItem {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbItem::after {
+  content: "/";
+  margin: 0 8px;
+  color: var(--text-color);
+}
+
+.breadcrumbItem:last-child:after {
+  display: none;
+}
+
+.breadcrumbItem a {
+  text-decoration: none;
+  color: var(--text-color) !important;
+  transition: color 0.2s;
+  text-transform: capitalize;
+}
+
+.breadcrumbItem span {
+  text-transform: capitalize;
+  text-align: start;
+}
+
+.breadcrumbItem a:hover {
+  color: #0056b3;
+}
+
+.active {
+  color: #000;
+  font-weight: bold;
+}
+
+@media (max-width: 1199px) {
+  .breadcrumb {
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 499px) {
+  .breadcrumb {
+    font-size: .9rem !important;
+  }
+}
+
+/* select css here  */
+
+.select__control {
+  padding: 5px 6px;
+  border-radius: 6px !important;
+  border: 1.5px solid var(--text-color) !important;
+}
+
+.select__single-value {
+  font-weight: 500 !important;
+}
